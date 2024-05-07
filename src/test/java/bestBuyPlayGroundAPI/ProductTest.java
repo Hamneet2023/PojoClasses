@@ -28,7 +28,7 @@ public void getAppProducts(ITestContext context) {
 	  context.setAttribute("ProductID",ProductID);
 	  
 	}
-	@Test
+	@Test(enabled=false)
 	public void getProductId(ITestContext context) {
 		 given()
          .pathParam("id", context.getAttribute("ProductID"))

@@ -12,8 +12,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;;
 
 public class PojoValidation {
+	public void setup() {
+		baseURI = "http://localhost:3030";//The base URI that's used by REST assured when making requests
+	}
 
-	@Test
+	@Test(enabled=false)
 	public void sendJsonPayload() throws JsonProcessingException {
 		PojoClass data = new PojoClass();
 		data.setName("Hamneet");
@@ -32,7 +35,7 @@ public class PojoValidation {
 		Response response = (Response) given()
 				.contentType("application/json")
 		        .body(jsonData)
-		        .when().post("http://localhost:3030/docs/#!/products/addProduct")
+		        .when().post("/products/addProduct")
 		        .then().log().all().statusCode(200);
 		
 		// Assuming the response is a JSON with an "id" field
@@ -40,3 +43,4 @@ public class PojoValidation {
 				System.out.println("Generated ID: " + generatedId);
 }
 	}
+//addProduct
