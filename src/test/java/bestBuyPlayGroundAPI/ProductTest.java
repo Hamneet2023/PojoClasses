@@ -35,6 +35,7 @@ public void getAppProducts(ITestContext context) {
      .when()
          .get("/products/{id}")
      .then()
+     
          .log().all();
 
 
